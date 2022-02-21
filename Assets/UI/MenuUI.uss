@@ -1,0 +1,23 @@
+Button {
+    -unity-font: url('project://database/Assets/UI/Fonts/Red%20Seven.otf?fileID=12800000&guid=98b6d4081ed256847934dfc0a734eccf&type=3#Red Seven');
+    -unity-font-definition: url('project://database/Assets/UI/Fonts/Red%20Seven%20SDF%201.asset?fileID=11400000&guid=2e46790261339c645905ebadc7a1be0c&type=2#Red Seven SDF 1');
+    translate: 0 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    -unity-text-align: middle-right;
+    height: 77px;
+    font-size: 31px;
+    white-space: normal;
+    color: rgba(154, 154, 154, 255);
+    background-color: rgba(255, 255, 255, 255);
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+Button:hover {
+    transition-duration: 0.5s;
+    translate: 108px 0;
+}
