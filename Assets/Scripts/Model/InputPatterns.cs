@@ -4,7 +4,7 @@ namespace Model
 {
     public class InputPatterns
     {
-        private readonly List<InputPattern> _value;
+        private readonly InputPattern[] _value;
         private int _selectedPatternIndex = -1;
 
         public InputPatterns(char c)
@@ -17,7 +17,7 @@ namespace Model
 
         public void Select(char a)
         {
-            for (var i = 0; i < _value.Count; i++)
+            for (var i = 0; i < _value.Length; i++)
             {
                 if (!_value[i].FirstChar(a)) continue;
                 _selectedPatternIndex = i;

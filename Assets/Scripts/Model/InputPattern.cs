@@ -8,6 +8,7 @@
         public InputPattern(string value)
         {
             _value = value;
+            _currentPatternCharIndex = 0;
         }
 
         public bool IsCompleted => _currentPatternCharIndex == _value.Length;
@@ -24,7 +25,7 @@
 
         public void AdvancePatternCharIndex()
         {
-            _currentPatternCharIndex += 1;
+            _currentPatternCharIndex ++;
         }
     }
 }
