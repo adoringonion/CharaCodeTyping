@@ -36,5 +36,15 @@ namespace Editor.Tests
             word.Input('S');
             Assert.AreEqual(new Success(true), word.Input('T'));
         }
+
+        [Test]
+        public void InputComplete_False()
+        {
+            var word = new Word("TEST");
+            word.Input('T');
+            word.Input('E');
+            word.Input('S');
+            Assert.AreEqual(new Fail(), word.Input('S'));
+        }
     }
 }
