@@ -10,15 +10,20 @@ public class InputSoundPlayer : MonoBehaviour
 
     private void Start()
     {
-        question.InputSuccessObservable.Subscribe(isCompleted =>
+        question.InputSuccessObservable.Subscribe(success =>
         {
-            if (isCompleted)
-                completeSound.Play();
-            else
-                successSound.Play();
+            switch (success)
+            {
+                case (_, true):
+                    completeSound.Play();
+                    break;
+                default:
+                    successSound.Play();
+                    break;
+            }
         }).AddTo(this);
 
-        question.InputFailSubjectObservable.Subscribe(
+        question.InputFailObservable.Subscribe(
             _ => { failSound.Play(); }).AddTo(this);
     }
 }

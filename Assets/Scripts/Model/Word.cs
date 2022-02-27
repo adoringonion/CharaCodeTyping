@@ -19,9 +19,9 @@ namespace Model
         private Char CurrentChar => _chars[_currentCharIndex];
 
 
-        public InputResult Input(char c)
+        public InputResult Input(Key key)
         {
-            return CurrentChar.Input(c) switch
+            return CurrentChar.Input(key) switch
             {
                 Success(var isCompleted) => CheckCompleted(isCompleted),
                 Fail => new Fail(),

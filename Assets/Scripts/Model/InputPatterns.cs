@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Model
+﻿namespace Model
 {
     public class InputPatterns
     {
@@ -15,11 +13,11 @@ namespace Model
         public InputPattern SelectedPattern => _value[_selectedPatternIndex];
         public bool IsPatternSelected => _selectedPatternIndex != -1;
 
-        public void Select(char a)
+        public void Select(char c)
         {
             for (var i = 0; i < _value.Length; i++)
             {
-                if (!_value[i].FirstChar(a)) continue;
+                if (!_value[i].FirstChar(c)) continue;
                 _selectedPatternIndex = i;
                 SelectedPattern.AdvancePatternCharIndex();
             }

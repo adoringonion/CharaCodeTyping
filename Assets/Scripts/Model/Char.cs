@@ -10,16 +10,16 @@
         }
 
 
-        public InputResult Input(char a)
+        public InputResult Input(Key key)
         {
             if (!_inputPatterns.IsPatternSelected)
             {
-                _inputPatterns.Select(a);
+                _inputPatterns.Select(key.Value);
                 if (!_inputPatterns.IsPatternSelected) return new Fail();
             }
             else
             {
-                if (_inputPatterns.SelectedPattern.IsValidCurrentChar(a))
+                if (_inputPatterns.SelectedPattern.IsValidCurrentChar(key.Value))
                     _inputPatterns.SelectedPattern.AdvancePatternCharIndex();
                 else
                     return new Fail();
