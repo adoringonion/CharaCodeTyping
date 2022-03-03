@@ -1,42 +1,28 @@
-﻿using System;
-using UniRx;
+﻿using UniRx;
+using UniRx.Triggers;
+using UnityEngine;
 
 namespace CharaCodeTyping.Scripts.Service
 {
-    public class Timer
+    public class Timer : MonoBehaviour
     {
-        private readonly GameStateManager _gameStateManager;
-        private double time;
-        private bool isStop;
-
-        public Timer(GameStateManager gameStateManager, double time)
-        {
-            _gameStateManager = gameStateManager;
-            this.time = time;
-        }
+        [SerializeField] private GameStateManager gameStateManager;
+        [SerializeField] private float time;
+        private bool _isStop;
 
         private void Start()
         {
-            Observable.Timer(TimeSpan.FromMinutes(time))
-                .Where(_ => !isStop)
-                .Subscribe(t =>
-                {
-                    
-                });
-            
-            _gameStateManager.GameStateObservable
-                .Where(state => state == GameStateManager.GameState.Start)
-                .Subscribe(_ =>
-                {
-                    isStop = false;
-                });
+            this.UpdateAsObservable()
+                .Where(_ => !_isStop && time > 0)
+                .Subscribe(_ => { time -= Time.deltaTime; });
 
-            _gameStateManager.GameStateObservable
+            gameStateManager.GameStateObservable
+                .Where(state => state == GameStateManager.GameState.Start)
+                .Subscribe(_ => { _isStop = false; });
+
+            gameStateManager.GameStateObservable
                 .Where(state => state is GameStateManager.GameState.Pause or GameStateManager.GameState.End)
-                .Subscribe(_ =>
-                {
-                    isStop = true;
-                });
+                .Subscribe(_ => { _isStop = true; });
         }
     }
 }
