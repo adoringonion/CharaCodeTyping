@@ -1,10 +1,10 @@
 ﻿using System;
-using Model;
+using CharaCodeTyping.Scripts.Model;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 
-namespace Controller
+namespace CharaCodeTyping.Scripts.Controller
 {
     public class KeyInputReceiver : MonoBehaviour
     {

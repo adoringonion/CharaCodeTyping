@@ -1,10 +1,10 @@
 ﻿using System;
-using Controller;
-using Model;
+using CharaCodeTyping.Scripts.Controller;
+using CharaCodeTyping.Scripts.Model;
 using UniRx;
 using UnityEngine;
 
-namespace Service
+namespace CharaCodeTyping.Scripts.Service
 {
     public class Question : MonoBehaviour
     {
@@ -31,10 +31,14 @@ namespace Service
                 {
                     switch (_currentWord.Input(key))
                     {
-                        case Success(var isCompleted):
-                            Success(key, isCompleted);
+                        case InputResult.Success:
+                            _successSubject.OnNext((key, false));
                             break;
-                        case Fail:
+                        case InputResult.Complete:
+                            _successSubject.OnNext((key, true));
+                            NextWord();
+                            break;
+                        case InputResult.Fail:
                             _failSubject.OnNext(Unit.Default);
                             break;
                         default:
@@ -47,20 +51,6 @@ namespace Service
         {
             _currentWordReactive.Value = _randomWord.NextWord();
             _currentWord = _currentWordReactive.Value;
-        }
-
-
-        private void Success(Key key, bool isCompleted)
-        {
-            if (isCompleted)
-            {
-                _successSubject.OnNext((key, true));
-                NextWord();
-            }
-            else
-            {
-                _successSubject.OnNext((key, false));
-            }
         }
     }
 }

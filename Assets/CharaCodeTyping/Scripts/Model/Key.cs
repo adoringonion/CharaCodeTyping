@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace CharaCodeTyping.Scripts.Model
 {
     public class Key
     {

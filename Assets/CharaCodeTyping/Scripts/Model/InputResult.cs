@@ -1,8 +1,9 @@
-﻿namespace Model
+﻿namespace CharaCodeTyping.Scripts.Model
 {
-    public record InputResult;
-
-    public sealed record Success(bool IsCompleted) : InputResult;
-
-    public sealed record Fail : InputResult;
+    public enum InputResult
+    {
+        Success,
+        Complete,
+        Fail
+    }
 }

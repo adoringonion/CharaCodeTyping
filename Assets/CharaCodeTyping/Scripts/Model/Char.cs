@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace CharaCodeTyping.Scripts.Model
 {
     public class Char
     {
@@ -15,17 +15,17 @@
             if (!_inputPatterns.IsPatternSelected)
             {
                 _inputPatterns.Select(key.Value);
-                if (!_inputPatterns.IsPatternSelected) return new Fail();
+                if (!_inputPatterns.IsPatternSelected) return InputResult.Fail;
             }
             else
             {
                 if (_inputPatterns.SelectedPattern.IsValidCurrentChar(key.Value))
                     _inputPatterns.SelectedPattern.AdvancePatternCharIndex();
                 else
-                    return new Fail();
+                    return InputResult.Fail;
             }
 
-            return new Success(_inputPatterns.SelectedPattern.IsCompleted);
+            return _inputPatterns.SelectedPattern.IsCompleted ? InputResult.Complete : InputResult.Success;
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Model
+namespace CharaCodeTyping.Scripts.Model
 {
     public class Word
     {
@@ -18,21 +18,23 @@ namespace Model
         public string Value { get; }
         private Char CurrentChar => _chars[_currentCharIndex];
 
+        private bool IsCompleted => _chars.Count == _currentCharIndex;
+
 
         public InputResult Input(Key key)
         {
-            return CurrentChar.Input(key) switch
+            switch (CurrentChar.Input(key))
             {
-                Success(var isCompleted) => CheckCompleted(isCompleted),
-                Fail => new Fail(),
-                _ => throw new ArgumentOutOfRangeException()
-            };
-        }
-
-        private InputResult CheckCompleted(bool isCompleted)
-        {
-            if (isCompleted) _currentCharIndex += 1;
-            return _chars.Count == _currentCharIndex ? new Success(true) : new Success(false);
+                case InputResult.Success:
+                    return InputResult.Success;
+                case InputResult.Complete:
+                    _currentCharIndex += 1;
+                    return IsCompleted ? InputResult.Complete : InputResult.Success;
+                case InputResult.Fail:
+                    return InputResult.Fail;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

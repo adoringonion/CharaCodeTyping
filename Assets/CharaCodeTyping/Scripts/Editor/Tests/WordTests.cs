@@ -1,7 +1,7 @@
-﻿using Model;
+﻿using CharaCodeTyping.Scripts.Model;
 using NUnit.Framework;
 
-namespace Editor.Tests
+namespace CharaCodeTyping.Scripts.Editor.Tests
 {
     public class WordTests
     {
@@ -9,14 +9,14 @@ namespace Editor.Tests
         public void FirstInput_True()
         {
             var word = new Word("TEST");
-            Assert.AreEqual(new Success(false), word.Input(new Key('T')));
+            Assert.AreEqual(InputResult.Success, word.Input(new Key('T')));
         }
 
         [Test]
         public void FirstInput_False()
         {
             var word = new Word("TEST");
-            Assert.AreEqual(new Fail(), word.Input(new Key('B')));
+            Assert.AreEqual(InputResult.Fail, word.Input(new Key('B')));
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace Editor.Tests
         {
             var word = new Word("TEST");
             word.Input(new Key('T'));
-            Assert.AreEqual(new Success(false), word.Input(new Key('E')));
+            Assert.AreEqual(InputResult.Success, word.Input(new Key('E')));
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace Editor.Tests
             word.Input(new Key('T'));
             word.Input(new Key('E'));
             word.Input(new Key('S'));
-            Assert.AreEqual(new Success(true), word.Input(new Key('T')));
+            Assert.AreEqual(InputResult.Complete, word.Input(new Key('T')));
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace Editor.Tests
             word.Input(new Key('T'));
             word.Input(new Key('E'));
             word.Input(new Key('S'));
-            Assert.AreEqual(new Fail(), word.Input(new Key('S')));
+            Assert.AreEqual(InputResult.Fail, word.Input(new Key('S')));
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿using Service;
+﻿using CharaCodeTyping.Scripts.Service;
 using UniRx;
 using UnityEngine;
 
-namespace Sound
+namespace CharaCodeTyping.Scripts.Sound
 {
     public class InputSoundPlayer : MonoBehaviour
     {

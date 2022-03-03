@@ -2,7 +2,7 @@
 using UniRx;
 using UnityEngine;
 
-namespace Service
+namespace CharaCodeTyping.Scripts.Service
 {
     public class GameStateManager : MonoBehaviour
     {

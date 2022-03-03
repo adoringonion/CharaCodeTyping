@@ -1,7 +1,7 @@
-﻿using Model;
+﻿using CharaCodeTyping.Scripts.Model;
 using NUnit.Framework;
 
-namespace Editor.Tests
+namespace CharaCodeTyping.Scripts.Editor.Tests
 {
     public class CharTests
     {
@@ -9,29 +9,29 @@ namespace Editor.Tests
         public void FirstInput_True_Test()
         {
             var c = new Char('A');
-            Assert.AreEqual(new Success(true), c.Input(new Key('A')));
+            Assert.AreEqual(InputResult.Complete, c.Input(new Key('A')));
         }
 
         [Test]
         public void FirstInput_False_Test()
         {
             var c = new Char('A');
-            Assert.AreEqual(new Fail(), c.Input(new Key('B')));
+            Assert.AreEqual(InputResult.Fail, c.Input(new Key('B')));
         }
 
         [Test]
         public void JP_FirstInput_True_test()
         {
             var c = new Char('ふ');
-            Assert.AreEqual(new Success(false), c.Input(new Key('h')));
+            Assert.AreEqual(InputResult.Success, c.Input(new Key('h')));
         }
 
         [Test]
         public void JP_InputComplete_True_test()
         {
             var c = new Char('ふ');
-            Assert.AreEqual(new Success(false), c.Input(new Key('f')));
-            Assert.AreEqual(new Success(true), c.Input(new Key('u')));
+            Assert.AreEqual(InputResult.Success, c.Input(new Key('f')));
+            Assert.AreEqual(InputResult.Complete, c.Input(new Key('u')));
         }
     }
 }

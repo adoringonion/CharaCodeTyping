@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Model;
+using CharaCodeTyping.Scripts.Model;
 using UnityEngine;
 
-namespace Service
+namespace CharaCodeTyping.Scripts.Service
 {
     public class RandomWord
     {

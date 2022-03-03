@@ -1,7 +1,7 @@
 ﻿using System;
 using UniRx;
 
-namespace Service
+namespace CharaCodeTyping.Scripts.Service
 {
     public class Timer
     {

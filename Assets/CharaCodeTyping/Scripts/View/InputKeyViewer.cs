@@ -1,5 +1,5 @@
-﻿using Model;
-using Service;
+﻿using CharaCodeTyping.Scripts.Model;
+using CharaCodeTyping.Scripts.Service;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UIElements;

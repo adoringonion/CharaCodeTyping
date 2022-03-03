@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Model
+namespace CharaCodeTyping.Scripts.Model
 {
     public static class InputPatternDict
     {

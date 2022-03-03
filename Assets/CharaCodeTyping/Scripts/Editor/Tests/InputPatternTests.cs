@@ -1,7 +1,7 @@
-using Model;
+using CharaCodeTyping.Scripts.Model;
 using NUnit.Framework;
 
-namespace Editor.Tests
+namespace CharaCodeTyping.Scripts.Editor.Tests
 {
     public class InputPatternTests
     {
