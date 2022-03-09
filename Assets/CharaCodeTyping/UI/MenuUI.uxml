@@ -1,6 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/CharaCodeTyping/UI/MenuUI.uss?fileID=7433441132597879392&amp;guid=edaae8bfdd416a947ab02e8fb8c64ff2&amp;type=3#MenuUI" />
-    <ui:VisualElement name="Screen" style="width: 100%; height: 100%; justify-content: center; align-items: center; background-color: rgb(255, 0, 0); -unity-font-definition: url(&apos;project://database/Assets/CharaCodeTyping/UI/Fonts/Red%20Seven%20SDF%201.asset?fileID=11400000&amp;guid=2e46790261339c645905ebadc7a1be0c&amp;type=2#Red Seven SDF 1&apos;);">
-        <ui:Label text="Characode&#10;Typing" display-tooltip-when-elided="true" name="TitleLogo" style="justify-content: center; align-items: auto; -unity-font: url(&apos;project://database/Assets/CharaCodeTyping/UI/Fonts/Red%20Seven.otf?fileID=12800000&amp;guid=98b6d4081ed256847934dfc0a734eccf&amp;type=3#Red Seven&apos;); -unity-font-definition: none; -unity-text-align: middle-center; font-size: 72px;" />
-    </ui:VisualElement>
-</ui:UXML>
