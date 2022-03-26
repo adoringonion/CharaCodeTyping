@@ -6,9 +6,8 @@ using UnityEngine;
 
 namespace CharaCodeTyping.Scripts.Service
 {
-    public class Question : MonoBehaviour
+    public class Question
     {
-        [SerializeField] private KeyInputReceiver inputReceiver;
         private readonly ReactiveProperty<Word> _currentWordReactive = new();
         private readonly Subject<Unit> _failSubject = new();
         private readonly Subject<(Key, bool)> _successSubject = new();
@@ -18,15 +17,24 @@ namespace CharaCodeTyping.Scripts.Service
         public IObservable<Unit> InputFailObservable => _failSubject;
         public IObservable<Word> CurrentWordObservable => _currentWordReactive;
 
-        private void Awake()
+        private readonly KeyInputReceiver _keyInputReceiver;
+
+        private void Init()
         {
             _randomWord = new RandomWord();
             NextWord();
         }
 
-        private void Start()
+        public Question(KeyInputReceiver keyInputReceiver)
         {
-            inputReceiver.InputtedKey
+            _keyInputReceiver = keyInputReceiver;
+            Init();
+            Publish();
+        }
+
+        private void Publish()
+        {
+            _keyInputReceiver.InputtedKey
                 .Subscribe(key =>
                 {
                     switch (_currentWord.Input(key))
@@ -44,7 +52,7 @@ namespace CharaCodeTyping.Scripts.Service
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
-                }).AddTo(this);
+                });
         }
 
         private void NextWord()

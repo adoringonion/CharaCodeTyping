@@ -1,10 +1,10 @@
 ﻿using System;
 using UniRx;
-using UnityEngine;
+using VContainer.Unity;
 
 namespace CharaCodeTyping.Scripts.Service
 {
-    public class GameStateManager : MonoBehaviour
+    public class GameStateManager
     {
         public enum GameState
         {
@@ -13,9 +13,13 @@ namespace CharaCodeTyping.Scripts.Service
             End
         }
 
-        private readonly ReactiveProperty<GameState> _gameState = new(GameState.Pause);
+        private readonly ReactiveProperty<GameState> _gameState;
         public IObservable<GameState> GameStateObservable => _gameState;
 
+        public GameStateManager()
+        {
+            _gameState = new ReactiveProperty<GameState>(GameState.Pause);
+        }
         public void StartGame()
         {
             _gameState.Value = GameState.Start;
