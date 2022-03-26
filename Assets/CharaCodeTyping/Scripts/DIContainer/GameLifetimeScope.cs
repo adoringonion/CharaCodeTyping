@@ -1,6 +1,7 @@
 using CharaCodeTyping.Scripts.Controller;
 using CharaCodeTyping.Scripts.Service;
 using CharaCodeTyping.Scripts.Sound;
+using CharaCodeTyping.Scripts.View;
 using VContainer;
 using VContainer.Unity;
 
@@ -15,6 +16,8 @@ namespace CharaCodeTyping.Scripts.DIContainer
             builder.Register<Question>(Lifetime.Singleton);
             builder.RegisterComponentInHierarchy<InputSoundPlayer>();
             builder.RegisterComponentInHierarchy<KeyInputReceiver>();
+            builder.Register<Timer>(Lifetime.Singleton);
+            
             
             builder.UseEntryPoints(Lifetime.Singleton, entryPoints =>
             {

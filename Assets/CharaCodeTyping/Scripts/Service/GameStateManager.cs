@@ -15,6 +15,7 @@ namespace CharaCodeTyping.Scripts.Service
 
         private readonly ReactiveProperty<GameState> _gameState;
         public IObservable<GameState> GameStateObservable => _gameState;
+        public GameState CurrentState => _gameState.Value;
 
         public GameStateManager()
         {

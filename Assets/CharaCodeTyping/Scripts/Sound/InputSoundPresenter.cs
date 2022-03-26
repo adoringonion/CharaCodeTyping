@@ -22,7 +22,6 @@ namespace CharaCodeTyping.Scripts.Sound
             _question.InputSuccessObservable
                 .Subscribe(success =>
                 {
-                    Debug.Log("aaaaa");
                     switch (success)
                     {
                         case (_, true):
