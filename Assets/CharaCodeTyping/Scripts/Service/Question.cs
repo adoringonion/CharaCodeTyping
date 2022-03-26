@@ -18,6 +18,9 @@ namespace CharaCodeTyping.Scripts.Service
         public IObservable<Word> CurrentWordObservable => _currentWordReactive;
 
         private readonly KeyInputReceiver _keyInputReceiver;
+        private readonly GameStateManager _gameStateManager;
+
+        private bool canInput;
 
         private void Init()
         {
@@ -25,16 +28,24 @@ namespace CharaCodeTyping.Scripts.Service
             NextWord();
         }
 
-        public Question(KeyInputReceiver keyInputReceiver)
+        public Question(KeyInputReceiver keyInputReceiver, GameStateManager gameStateManager)
         {
             _keyInputReceiver = keyInputReceiver;
+            _gameStateManager = gameStateManager;
             Init();
             Publish();
         }
 
         private void Publish()
         {
+            _gameStateManager.GameStateObservable.Subscribe(state =>
+                {
+                    canInput = state == GameStateManager.GameState.Playing;
+                }
+            );
+            
             _keyInputReceiver.InputtedKey
+                .Where(_ => canInput)
                 .Subscribe(key =>
                 {
                     switch (_currentWord.Input(key))

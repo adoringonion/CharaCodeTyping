@@ -9,7 +9,7 @@ namespace CharaCodeTyping.Scripts.Service
         public enum GameState
         {
             Pause,
-            Start,
+            Playing,
             End
         }
 
@@ -22,7 +22,7 @@ namespace CharaCodeTyping.Scripts.Service
         }
         public void StartGame()
         {
-            _gameState.Value = GameState.Start;
+            _gameState.Value = GameState.Playing;
         }
 
         public void PauseGame()

@@ -22,7 +22,7 @@ namespace CharaCodeTyping.Scripts.Service
                 .Subscribe(_ => { _time -= Time.deltaTime;});
             
             _gameStateManager.GameStateObservable
-                .Where(state => state == GameStateManager.GameState.Start)
+                .Where(state => state == GameStateManager.GameState.Playing)
                 .Subscribe(_ => { _isStop = false; });
 
             _gameStateManager.GameStateObservable

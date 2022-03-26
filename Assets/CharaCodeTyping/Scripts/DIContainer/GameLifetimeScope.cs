@@ -13,7 +13,7 @@ namespace CharaCodeTyping.Scripts.DIContainer
         {
             builder.Register<GameStateManager>(Lifetime.Singleton);
             builder.Register<Question>(Lifetime.Singleton);
-            builder.Register<InputSoundPlayer>(Lifetime.Singleton);
+            builder.RegisterComponentInHierarchy<InputSoundPlayer>();
             builder.RegisterComponentInHierarchy<KeyInputReceiver>();
             
             builder.UseEntryPoints(Lifetime.Singleton, entryPoints =>
