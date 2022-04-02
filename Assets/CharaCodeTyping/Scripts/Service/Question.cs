@@ -2,7 +2,6 @@
 using CharaCodeTyping.Scripts.Controller;
 using CharaCodeTyping.Scripts.Model;
 using UniRx;
-using UnityEngine;
 
 namespace CharaCodeTyping.Scripts.Service
 {
@@ -20,7 +19,7 @@ namespace CharaCodeTyping.Scripts.Service
         private readonly KeyInputReceiver _keyInputReceiver;
         private readonly GameStateManager _gameStateManager;
 
-        private bool canInput;
+        private bool _canInput;
 
         private void Init()
         {
@@ -40,12 +39,12 @@ namespace CharaCodeTyping.Scripts.Service
         {
             _gameStateManager.GameStateObservable.Subscribe(state =>
                 {
-                    canInput = state == GameStateManager.GameState.Playing;
+                    _canInput = state == GameStateManager.GameState.Playing;
                 }
             );
             
             _keyInputReceiver.InputtedKey
-                .Where(_ => canInput)
+                .Where(_ => _canInput)
                 .Subscribe(key =>
                 {
                     switch (_currentWord.Input(key))

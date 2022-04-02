@@ -4,14 +4,15 @@ using CharaCodeTyping.Scripts.Service;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VContainer;
 
 namespace CharaCodeTyping.Scripts.View
 {
     public class WordUI : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _questionText;
-        [SerializeField] private TextMeshProUGUI _inputText;
+        [SerializeField] private TextMeshProUGUI questionText;
+        [SerializeField] private TextMeshProUGUI inputText;
 
         private Question _question;
 
@@ -27,7 +28,7 @@ namespace CharaCodeTyping.Scripts.View
             _question.CurrentWordObservable
                 .Subscribe(word =>
                 {
-                    _questionText.text = word.Value;
+                    questionText.text = word.Value;
                 });
 
             _question.InputSuccessObservable
@@ -39,7 +40,7 @@ namespace CharaCodeTyping.Scripts.View
                             ClearInputText();
                             break;
                         case (Key key, _):
-                            _inputText.text += key.Value;
+                            inputText.text += key.Value;
                             break;
                     }
                 });
@@ -47,7 +48,7 @@ namespace CharaCodeTyping.Scripts.View
 
         private void ClearInputText()
         {
-            _inputText.text = string.Empty;
+            inputText.text = string.Empty;
         }
     }
 }

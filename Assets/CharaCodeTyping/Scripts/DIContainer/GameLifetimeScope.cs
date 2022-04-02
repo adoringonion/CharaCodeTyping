@@ -17,6 +17,7 @@ namespace CharaCodeTyping.Scripts.DIContainer
             builder.RegisterComponentInHierarchy<InputSoundPlayer>();
             builder.RegisterComponentInHierarchy<KeyInputReceiver>();
             builder.Register<Timer>(Lifetime.Singleton);
+            builder.Register<ScoreManager>(Lifetime.Singleton);
             
             
             builder.UseEntryPoints(Lifetime.Singleton, entryPoints =>
