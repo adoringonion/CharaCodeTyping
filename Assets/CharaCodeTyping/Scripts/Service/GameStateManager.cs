@@ -1,24 +1,29 @@
 ﻿using System;
 using UniRx;
-using UnityEngine;
+using VContainer.Unity;
 
 namespace CharaCodeTyping.Scripts.Service
 {
-    public class GameStateManager : MonoBehaviour
+    public class GameStateManager
     {
         public enum GameState
         {
             Pause,
-            Start,
+            Playing,
             End
         }
 
-        private readonly ReactiveProperty<GameState> _gameState = new(GameState.Pause);
+        private readonly ReactiveProperty<GameState> _gameState;
         public IObservable<GameState> GameStateObservable => _gameState;
+        public GameState CurrentState => _gameState.Value;
 
+        public GameStateManager()
+        {
+            _gameState = new ReactiveProperty<GameState>(GameState.Pause);
+        }
         public void StartGame()
         {
-            _gameState.Value = GameState.Start;
+            _gameState.Value = GameState.Playing;
         }
 
         public void PauseGame()
